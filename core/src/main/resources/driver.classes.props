@@ -8,6 +8,7 @@ arff=net.librec.data.model.ArffDataModel
 #DataAppender(-appender)
 social=net.librec.data.convertor.appender.SocialDataAppender
 document=net.librec.data.convertor.appender.DocumentDataAppender
+photo=net.librec.data.convertor.appender.PhotoDataAppender
 #DataSplitter(-splitter)
 ratio=net.librec.data.splitter.RatioDataSplitter
 givenn=net.librec.data.splitter.GivenNDataSplitter
@@ -87,6 +88,8 @@ pitf=net.librec.recommender.context.rating.PITFRecommender
 rste=net.librec.recommender.context.rating.RSTERecommender
 socialmf=net.librec.recommender.context.rating.SocialMFRecommender
 sorec=net.librec.recommender.context.rating.SoRecRecommender
+svpoi=net.librec.recommender.context.rating.SVPOIRecommender
+svpoi2=net.librec.recommender.context.rating.SVPOI2Recommender
 soreg=net.librec.recommender.context.rating.SoRegRecommender
 timesvd=net.librec.recommender.context.rating.TimeSVDRecommender
 trustmf=net.librec.recommender.context.rating.TrustMFRecommender

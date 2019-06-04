@@ -72,7 +72,7 @@ public class WRMFRecommender extends MatrixFactorizationRecommender {
     @Override
     protected void trainModel() throws LibrecException {
 
-        SparseMatrix userIdentityMatrix = DiagMatrix.eye(numFactors).scale(regUser);
+        SparseMatrix userIdentityMatrix = DiagMatrix.eye(numFactors).scale(regUser);//lambda * I
         SparseMatrix itemIdentityMatrix = DiagMatrix.eye(numFactors).scale(regItem);
 
         // To be consistent with the symbols in the paper
@@ -120,7 +120,7 @@ public class WRMFRecommender extends MatrixFactorizationRecommender {
                 DenseVector xu = Wu.mult(YtCuPu);
                 // udpate user factors
                 X.setRow(userIdx, xu);
-            }
+            } 
 
             // Step 2: update item factors;
             DenseMatrix Xt = X.transpose();

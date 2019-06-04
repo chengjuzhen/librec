@@ -170,7 +170,7 @@ public abstract class AbstractRecommender implements Recommender {
             }
         }
         earlyStop = conf.getBoolean("rec.recommender.earlystop", false);
-        verbose = conf.getBoolean("rec.recommender.verbose", true);
+        verbose = conf.getBoolean("rec.recommender.verbose", true);//是否显示详细信息
 
         trainMatrix = (SparseMatrix) getDataModel().getTrainDataSet();
         testMatrix = (SparseMatrix) getDataModel().getTestDataSet();
@@ -185,9 +185,6 @@ public abstract class AbstractRecommender implements Recommender {
         Collections.sort(ratingScale);
         maxRate = Collections.max(trainMatrix.getValueSet());
         minRate = Collections.min(trainMatrix.getValueSet());
-        if (minRate == maxRate) {
-            minRate = 0;
-        }
         globalMean = trainMatrix.mean();
 
         int[] numDroppedItemsArray = new int[numUsers]; // for AUCEvaluator

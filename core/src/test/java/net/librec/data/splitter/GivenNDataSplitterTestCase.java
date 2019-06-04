@@ -60,8 +60,8 @@ public class GivenNDataSplitterTestCase extends BaseTestCase{
      */
 	@Test
 	public void test01GivenNByUser() throws Exception {
-		conf.set("data.splitter.givenn", "user");
-		conf.set("data.splitter.givenn.n", "1");
+		conf.set("data.splitter.givenn", "user");//按照用户id进行训练集和测试集划分
+		conf.set("data.splitter.givenn.n", "1");//将1份作为测试集，其余作为训练集
 		convertor.processData();
 
 		GivenNDataSplitter splitter = new GivenNDataSplitter(convertor, conf);
@@ -79,7 +79,7 @@ public class GivenNDataSplitterTestCase extends BaseTestCase{
 	 */
 	@Test
 	public void test02GivenNByItem() throws Exception {
-		conf.set("data.splitter.givenn", "item");
+		conf.set("data.splitter.givenn", "item");//按照物品id进行训练集和测试集划分
 		conf.set("data.splitter.givenn.n", "1");
 		convertor.processData();
 

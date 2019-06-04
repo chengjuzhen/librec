@@ -280,7 +280,7 @@ public class DenseMatrix implements DataMatrix, Serializable {
      * @return inner product of two row vectors
      */
     public static double rowMult(DenseMatrix m, int mrow, DenseMatrix n, int nrow) {
-        assert m.numColumns == n.numColumns;
+//        assert m.numColumns == n.numColumns; //这行代码不需要
 
         double res = 0;
         for (int j = 0, k = m.numColumns; j < k; j++)

@@ -17,6 +17,8 @@
  */
 package net.librec.data.model;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import net.librec.common.LibrecException;
 import net.librec.conf.Configured;
 import net.librec.data.*;
@@ -29,6 +31,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * A <tt>AbstractDataModel</tt> represents a data access class to the input
@@ -69,6 +72,8 @@ public abstract class AbstractDataModel extends Configured implements DataModel 
      * Data Splitter {@link DataAppender}
      */
     public DataAppender dataAppender;
+
+    public BiMap<String, DataAppender> dataAppenderBM;
 
     /**
      * Build Convert.
@@ -111,19 +116,24 @@ public abstract class AbstractDataModel extends Configured implements DataModel 
      *             if error occurs when building appender.
      */
     protected void buildFeature() throws LibrecException {
-        String feature = conf.get("data.appender.class");
-        if (StringUtils.isNotBlank(feature)) {
-            try {
-                dataAppender = (DataAppender) ReflectionUtil.newInstance(DriverClassUtil.getClass(feature), conf);
-                dataAppender.setUserMappingData(getUserMappingData());
-                dataAppender.setItemMappingData(getItemMappingData());
-                dataAppender.processData();
-            } catch (ClassNotFoundException e) {
-                throw new LibrecException(e);
-            } catch (IOException e) {
-                throw new LibrecException(e);
+        String[] features = conf.getStrings("data.appender.class");
+        dataAppenderBM = HashBiMap.create();
+        for(String feature : features){
+            if (StringUtils.isNotBlank(feature)) {
+                try {
+                    dataAppender = (DataAppender) ReflectionUtil.newInstance(DriverClassUtil.getClass(feature), conf);
+                    dataAppenderBM.put(feature, dataAppender);
+                    dataAppender.setUserMappingData(getUserMappingData());
+                    dataAppender.setItemMappingData(getItemMappingData());
+                    dataAppender.processData();
+                } catch (ClassNotFoundException e) {
+                    throw new LibrecException(e);
+                } catch (IOException e) {
+                    throw new LibrecException(e);
+                }
             }
         }
+
     }
 
     /**
@@ -218,6 +228,16 @@ public abstract class AbstractDataModel extends Configured implements DataModel 
     }
 
     /**
+     * Get data appenderBM.
+     *
+     * @return  the BiMap appenders of data model.
+     */
+    public BiMap<String, DataAppender> getDataAppenderBM() {
+        return dataAppenderBM;
+    }
+
+
+    /**
      * Get data appender.
      *
      * @return the appender of data model.
@@ -225,6 +245,7 @@ public abstract class AbstractDataModel extends Configured implements DataModel 
     public DataAppender getDataAppender() {
         return dataAppender;
     }
+
 
     /**
      * Get data context.

@@ -43,8 +43,12 @@ public abstract class SocialRecommender extends MatrixFactorizationRecommender {
         super.setup();
         regSocial = conf.getFloat("rec.social.regularization", 0.01f);
         // social path for the socialMatrix
-        socialMatrix = ((SocialDataAppender) getDataModel().getDataAppender()).getUserAppender();
+//        socialMatrix = ((SocialDataAppender) getDataModel().getDataAppender()).getUserAppender();
+
+        socialMatrix = ((SocialDataAppender) getDataModel().getDataAppenderBM().get("social")).getUserAppender();
+
     }
+
 
     @Override
     protected double predict(int userIdx, int itemIdx, boolean bounded) throws LibrecException {

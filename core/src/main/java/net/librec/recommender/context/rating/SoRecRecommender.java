@@ -47,8 +47,8 @@ public class SoRecRecommender extends SocialRecommender {
     @Override
     public void setup() throws LibrecException {
         super.setup();
-        userFactors.init(1.0);
-        itemFactors.init(1.0);
+//        userFactors.init(1.0);//此处为啥又要重新初始化呢？？？已经高斯初始化了呀。PMF中直接就是用了高斯初始化的特征向量。这可能是个bug
+//        itemFactors.init(1.0);
         regRateSocial = conf.getFloat("rec.rate.social.regularization", 0.01f);
         regUserSocial = conf.getFloat("rec.user.social.regularization", 0.01f);
 
@@ -65,6 +65,7 @@ public class SoRecRecommender extends SocialRecommender {
             inDegrees.add(in);
             outDegrees.add(out);
         }
+
     }
 
     @Override

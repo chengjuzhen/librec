@@ -107,6 +107,14 @@ public interface DataModel {
      * @return  the appender of data model.
      */
     public DataAppender getDataAppender();
+
+
+    /**
+     * Get data appenderBM.
+     *
+     * @return  the BiMap appenders of data model.
+     */
+    public BiMap<String, DataAppender> getDataAppenderBM();
     
 
     /**
