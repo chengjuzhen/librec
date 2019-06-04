@@ -1,3 +1,8 @@
+### For POI Recommendation, please see the branch <POI-Recommendation>
+
+<div style="text-align:center;"><img src="https://github.com/chengjuzhen/librec/blob/master/photo/branch.jpg" width="600" /> </div>
+
+
 <img src="http://librec.net/images/logo.png" height="25%" width="25%" />
 
 **LibRec** (http://www.librec.net) is a Java library for recommender systems (Java version 1.7 or higher required). It implements a suit of state-of-the-art recommendation algorithms, aiming to resolve two classic recommendation tasks: **rating prediction** and **item ranking**. 
@@ -108,3 +113,9 @@ LibRec has been used in the following publications (let me know if your paper is
 LibRec is [free software](http://www.gnu.org/philosophy/free-sw.html): you can redistribute it and/or modify it under the terms of the [GNU General Public License (GPL)](http://www.gnu.org/licenses/gpl.html) as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. LibRec is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 
 You should have received a copy of the GNU General Public License along with LibRec. If not, see http://www.gnu.org/licenses/.
+
+
+### 打赏随意
+
+<div style="text-align:center;"><img src="https://github.com/chengjuzhen/librec/blob/master/photo/wechat.jpg" width="600" /> </div>
+
